@@ -1,0 +1,17 @@
+.label {
+  font-size: 24px;
+}
+
+.number {
+  flex-shrink: 0;
+  background: #fafafa;
+  color: #a8a8a8;
+  font-family: Lato;
+  font-size: 48px;
+  font-style: normal;
+  font-weight: 500;
+  line-height: normal;
+  text-transform: capitalize;
+  padding: 30px 25px;
+  margin: 0 20px;
+}

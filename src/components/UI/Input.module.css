@@ -1,0 +1,27 @@
+input.control {
+  width: 280px;
+  height: 55px;
+  color: #1e1e1e;
+  font-family: Lato;
+  font-size: 48px;
+  font-style: normal;
+  text-align: center;
+  line-height: normal;
+  text-transform: capitalize;
+  outline: none;
+  margin: 0 25px;
+}
+
+input::placeholder{
+  color: #DCDCDC;
+}
+
+.sm{
+  width: 80px !important;
+  height: 120px !important;
+}
+
+input.control::-webkit-outer-spin-button,
+input.control::-webkit-inner-spin-button {
+  display: none;
+}
