@@ -19,12 +19,12 @@ const LuckyProvider = (props) => {
     betAmount: 0,
     userNumbers,
     updateTotal,
-    addNumbers 
+    addNumbers
   };
 
   return (
     <LuckyContext.Provider value={initValues}>
-      {props.children}
+        {props.children}
     </LuckyContext.Provider>
   );
 };

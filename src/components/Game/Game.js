@@ -1,9 +1,11 @@
 import React, { useContext, useEffect, useState } from "react";
 import LuckyContext from "../../store/lucky-context";
 import PlayersNumbers from "./PlayersNumbers";
+import WinningStatus from "./WinningStatus"
 
 import Button from "../UI/Button";
 import BallsShowing from "./BallsShowing";
+import GameContext from "../../store/game-context";
 
 function getRandomNumber(min, max) {
   if (min > max) {
@@ -19,40 +21,44 @@ const Game = () => {
     const highestNum = 80;
   
     const [winningNumbers, setWinningNumbers] = useState([]);
-    const [gameFinished, setGameFinished] = useState(false);
 
     const ctx = useContext(LuckyContext);
+    const game = useContext(GameContext);
 
     const restartGame = () => {
-      setGameFinished(false);
+      game.closeGame();
+      game.unsetFinishGame();
     }
   
     useEffect(() => {
-      setGameFinished(false);
+      game.unsetFinishGame();
       setWinningNumbers([]);
       let i = 0;
       const interval = setInterval(() => {
         if (i < 20) {
           const num = getRandomNumber(lowestNum, highestNum);
+          if(winningNumbers.find(e => e === num)){
+            return;
+          }
           setWinningNumbers((prevNums) => [...prevNums, num]);
           i++;
         } else {
           clearInterval(interval);
-          setGameFinished(true);
+          game.finishGame();
         }
-      }, 500);
+      }, 1000);
   
       return () => {
         clearInterval(interval);
       };
-    }, []);
+    }, [ctx.userNumbers]);
 
   return (
     <div>
       <BallsShowing winningNumbers={winningNumbers} />
       <PlayersNumbers numbers={ctx.userNumbers} />
-
-      {gameFinished && <Button value="play again"/>}
+      <WinningStatus />
+      {game.gameFinished && <Button value="play again" onClick={restartGame}/>}
 
     </div>
   );

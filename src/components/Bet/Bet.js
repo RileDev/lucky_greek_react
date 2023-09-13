@@ -1,19 +1,20 @@
-import React, {useState} from "react";
+import React, {useContext, useState} from "react";
 import BetSetup from "./BetSetup";
 import Game from "../Game/Game";
+import GameContext from "../../store/game-context";
 
 const Bet = () => {
 
-    const [isGameStarted, setGameStarted] = useState(false);
+    const gameCtx = useContext(GameContext);
 
     const startGameHandler = () => {
-        setGameStarted(true);
+      gameCtx.startGame();
     }
 
   return (
     <>
-      {!isGameStarted && <BetSetup onStart={startGameHandler} />}
-      {isGameStarted && <Game />}
+      {!gameCtx.gameStarted && <BetSetup onStart={startGameHandler} />}
+      {gameCtx.gameStarted && <Game />}
     </>
   );
 };

@@ -1,16 +1,19 @@
-import React from 'react'
-import Header from './components/Header/Header'
+import React from "react";
+import Header from "./components/Header/Header";
 
-import LuckyProvider from './store/luckyProvider';
-import Bet from './components/Bet/Bet';
+import LuckyProvider from "./store/luckyProvider";
+import Bet from "./components/Bet/Bet";
+import GameProvider from "./store/gameProvider";
 
 const App = () => {
   return (
-    <LuckyProvider>
-      <Header />
-      <Bet />
-    </LuckyProvider>
-  )
-}
+    <GameProvider>
+      <LuckyProvider>
+        <Header />
+        <Bet />
+      </LuckyProvider>
+    </GameProvider>
+  );
+};
 
-export default App
+export default App;

@@ -5,17 +5,22 @@
 }
 
 .circleContainer{
+    position: relative;
     width: 459px;
     height: 459px;
     border-radius: 50%;
     margin: 60px 0;
     background: #E7E7E7;
     display: flex;
-    align-items: center;
     justify-content: center;
+    align-items: center;
 }
 
 .bigCircle{
+    position: absolute;
+    top: 50%;
+    left: 50%;
+    transform: translate(-50%, -50%);
     width: 269px;
     height: 269px;
     border-radius: 100%;
@@ -23,16 +28,71 @@
     display: flex;
     align-items: center;
     justify-content: center;
+    z-index: 10000;
 }
 
 .currentNumber{
     color: #000;
     background-color: #fafafa;
-    padding: 50px 70px;
+    width: 167px;
+    height: 167px;
     border-radius: 100%;
     font-family: Lato;
     font-size: 64px;
     font-style: normal;
     font-weight: 700;
     line-height: normal;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+
+.smallCircles{
+    display: flex;
+    align-items: center;
+    justify-content: center;
+}
+
+.smallCircleOverlay{
+    position: absolute;
+    left: 20px;
+    transform-origin: 210px;
+    transform: rotate(calc((360deg / 20 * var(--i)) + 90deg ));
+    list-style: none;
+    transition: 0.5s;
+    width: 50px;
+    height: 50px;
+    border-radius: 50%; 
+    background: #FFE587;
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    animation: circle ease-in calc(0.1s * var(--i));
+}
+
+.smallCircle{
+    color: #000;
+    background-color: #fafafa;
+    padding: 5px 7px;
+    border-radius: 100%;
+    font-family: Lato;
+    font-size: 15px;
+    font-style: normal;
+    font-weight: 300;
+    line-height: normal;
+    transform: rotate(270deg);
+    user-select: none;
+}
+
+@keyframes circle{
+    0%{
+        
+        transform: rotate(90deg);
+
+
+    }
+    100%{
+        transform: rotate(calc((360deg / 20 * var(--i)) + 90deg ));
+    }
 }
