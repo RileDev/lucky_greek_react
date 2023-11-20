@@ -46,7 +46,7 @@ const Game = () => {
           clearInterval(interval);
           game.finishGame();
         }
-      }, 1000);
+      }, 250);
   
       return () => {
         clearInterval(interval);
@@ -57,7 +57,7 @@ const Game = () => {
     <div>
       <BallsShowing winningNumbers={winningNumbers} />
       <PlayersNumbers numbers={ctx.userNumbers} />
-      <WinningStatus />
+      <WinningStatus winNumbers={winningNumbers} />
       {game.gameFinished && <Button value="play again" onClick={restartGame}/>}
 
     </div>
