@@ -60,7 +60,9 @@ const BetSetup = (props) => {
       if(betAmountValue > ctx.total) return;
       setIsValid(true);
       ctx.addNumbers([firstNumValue, secondNumValue, thirdNumValue]);
-      ctx.betAmount = betAmountValue;
+      console.log(betAmountValue);
+      ctx.updateBetAmount(betAmountValue);
+      console.log(ctx.betAmount);
       ctx.updateTotal(ctx.betAmount);
     //   console.log("Form is valid");
     //   console.log("First Number:", firstNumValue);

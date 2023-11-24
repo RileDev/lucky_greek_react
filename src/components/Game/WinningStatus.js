@@ -16,8 +16,10 @@ const WinningStatus = ({winNumbers}) => {
       const isSecondNumInArr = winNumbers.includes(secondNum)
       const isThirdNumInArr = winNumbers.includes(thirdNum)
 
+      console.log(ctx.total);
+      console.log(ctx.betAmount);
+      ctx.winningTotal(ctx.betAmount)
       if(isFirstNumInArr && isSecondNumInArr && isThirdNumInArr){
-        ctx.updateTotal(prevEl => prevEl * 97.5)
         setMessage("You Won!")
       }else{
         setMessage("You lost")
@@ -25,9 +27,9 @@ const WinningStatus = ({winNumbers}) => {
 
     }
     
-  }, [winNumbers])
+  }, [winNumbers, ctx.betAmount])
 
-  return <div>{message}</div>;
+  return <div style={{"font-size" : "5rem"}}>{message}</div>;
 };
 
 export default WinningStatus;

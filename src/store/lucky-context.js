@@ -5,6 +5,8 @@ const LuckyContext = React.createContext({
     betAmount: 0,
     userNumbers : [],
     updateTotal: () => {},
+    updateBetAmount: () => {},
+    winningTotal: () => {},
     addNumbers : () => {}
 })
 

@@ -4,10 +4,19 @@ import LuckyContext from "./lucky-context";
 
 const LuckyProvider = (props) => {
   const [total, setTotal] = useState(10000);
+  const [betAmount, setBetAmount] = useState(0);
   const [userNumbers, setUserNumbers] = useState([]);
+
+  const updateBetAmount = (betAmount) => {
+    setBetAmount(betAmount)
+  }
 
   const updateTotal = (betAmount) => {
     setTotal(prevTotal => prevTotal - betAmount);
+  };
+
+  const winningTotal = (betAmount) => {
+    setTotal(prevTotal => prevTotal + (betAmount * 97.5));
   };
   
   const addNumbers = (numbers) => {
@@ -16,9 +25,11 @@ const LuckyProvider = (props) => {
 
   const initValues = {
     total,
-    betAmount: 0,
+    betAmount,
     userNumbers,
+    updateBetAmount,
     updateTotal,
+    winningTotal,
     addNumbers
   };
 

@@ -57,7 +57,7 @@ const Game = () => {
     <div>
       <BallsShowing winningNumbers={winningNumbers} />
       <PlayersNumbers numbers={ctx.userNumbers} />
-      <WinningStatus winNumbers={winningNumbers} />
+      {game.gameFinished && <WinningStatus winNumbers={winningNumbers} />}
       {game.gameFinished && <Button value="play again" onClick={restartGame}/>}
 
     </div>
